@@ -1,0 +1,45 @@
+.header-content {
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #22c1c3;
+  background: radial-gradient(
+    circle,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+}
+
+.logo-img {
+  height: 8rem;
+  width: 8rem;
+  transform: translateX(50%);
+}
+
+.header-right-content {
+  transform: translateX(-75%);
+}
+
+.header-right-content p {
+  font-size: x-large;
+  font-weight: bold;
+  line-height: 0.4;
+}
+
+.quiz {
+  font-size: xx-large;
+  font-weight: bold;
+  line-height: 1;
+  /*background-image: linear-gradient(90deg, #d53369 0%, #daae51 100%);*/
+  background: #c32225;
+  background: linear-gradient(
+    0deg,
+    rgba(195, 34, 37, 1) 0%,
+    rgba(253, 45, 45, 0.77) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
