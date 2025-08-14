@@ -9,15 +9,12 @@ import './Category.css'
 const Category = () => {
   const { optionId } = useParams()
   const navigate = useNavigate()
-  let categorizedQ: {}[] = QUESTION_LIST.filter(
+  let categorizedQ: QUESTION_TYPE[] = QUESTION_LIST.filter(
     (ql) => ql.category === optionId
-  )
-  categorizedQ = categorizedQ.map((q, index) => {
-    return {
-      ...q,
-      index,
-    }
-  })
+  ).map((q, index) => ({
+    ...q,
+    index,
+  }))
 
   console.log(categorizedQ)
 
@@ -32,19 +29,20 @@ const Category = () => {
   useEffect(() => {}, [setOne, setTwo, setThree, setFour])
 
   const setHandler = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target.id === '1') {
+    const target = e.target as HTMLDivElement
+    if (target.id === '1') {
       setSetOne(() => categorizedQ.filter((q) => q.set === 1))
       navigate(`/${optionId}/set1`)
-    } else if (e.target.id === '2') {
-      setSetTwo(() => categorizedQ.filter((q) => q.set === 2))
+    } else if (target.id === '2') {
+      setSetTwo(categorizedQ.filter((q) => q.set === 2))
       navigate(`/${optionId}/set2`)
       console.log(setTwo)
-    } else if (e.target.id === '3') {
-      setSetThree(() => categorizedQ.filter((q) => q.set === 3))
+    } else if (target.id === '3') {
+      setSetThree(categorizedQ.filter((q) => q.set === 3))
       navigate(`/${optionId}/set3`)
       console.log(setThree)
-    } else if (e.target.id === '4') {
-      setSetFour(() => categorizedQ.filter((q) => q.set === 4))
+    } else if (target.id === '4') {
+      setSetFour(categorizedQ.filter((q) => q.set === 4))
       navigate(`/${optionId}/set4`)
       console.log(setFour)
     }
@@ -54,7 +52,7 @@ const Category = () => {
     <>
       <div className="category-header">
         <h1 className="heading">
-          {`You are Lucky 😜 
+          {`You are Lucky 😜
           welcome to ${optionId} Category`}
         </h1>
       </div>
