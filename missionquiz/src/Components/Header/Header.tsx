@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './Header.css'
 
 const Header = () => {
@@ -5,7 +6,9 @@ const Header = () => {
     <header className="header">
       <div className="header-content">
         <div className="logo">
-          <img className="logo-img" src="/vite.svg" alt="Vite logo" />
+          <Link to="/">
+            <img className="logo-img" src="/vite.svg" alt="Vite logo" />
+          </Link>
         </div>
         <div className="header-right-content">
           <h1>Peniel Evangelical Church</h1>

@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 type SpinWheelProps = {
   options: string[]
@@ -9,6 +10,7 @@ const SpinWheel: React.FC<SpinWheelProps> = ({ options, size = 520 }) => {
   const [spinning, setSpinning] = useState(false)
   const wheelRef = useRef<SVGSVGElement>(null)
   const currentRotation = useRef(0)
+  const navigate = useNavigate()
 
   const radius = size / 2
   const segmentAngle = 360 / options.length
@@ -53,6 +55,10 @@ const SpinWheel: React.FC<SpinWheelProps> = ({ options, size = 520 }) => {
     }, 4000)
   }
 
+  const handleCategory = (category: string) => {
+    navigate('/' + category)
+  }
+
   return (
     <>
       <div
@@ -95,6 +101,7 @@ const SpinWheel: React.FC<SpinWheelProps> = ({ options, size = 520 }) => {
               background: '#fff',
               boxSizing: 'border-box',
               transition: 'transform 4s cubic-bezier(.17,.67,.83,.67)',
+              cursor: spinning ? 'not-allowed' : 'pointer',
             }}
           >
             {options.map((option, i) => {
@@ -121,7 +128,7 @@ const SpinWheel: React.FC<SpinWheelProps> = ({ options, size = 520 }) => {
               const textY = radius + textRadius * Math.sin(textRad)
 
               return (
-                <g key={option}>
+                <g key={option} onClick={() => handleCategory(option)}>
                   <path
                     d={pathData}
                     fill={i % 2 === 0 ? '#fdbb2d' : '#ec0a0aff'}

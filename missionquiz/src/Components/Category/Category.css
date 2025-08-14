@@ -1,0 +1,29 @@
+.heading {
+  color: rgb(6, 238, 79);
+}
+.category-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.set-card {
+  border: 2px solid rgb(6, 238, 79);
+  width: 20%;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.set-card img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.set-card h2 {
+  background-color: rgb(5, 249, 249);
+  border-radius: 5px;
+  color: rgb(3, 3, 65);
+  font-size: xx-large;
+  font-weight: bolder;
+  font-style: italic;
+}
