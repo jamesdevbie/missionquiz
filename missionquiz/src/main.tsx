@@ -5,7 +5,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import Category from './Components/Category/Category.tsx'
 import Home from './Pages/Home/Home.tsx'
-import Question from './Components/Question/Question.tsx'
+import Questions from './Components/Questions/Questions.tsx'
+import Result from './Components/Result/Result.tsx'
 
 const appRouter = createBrowserRouter([
   {
@@ -22,20 +23,24 @@ const appRouter = createBrowserRouter([
         element: <Category />,
       },
       {
-        path: '/:optionId/set1',
-        element: <Question />,
+        path: '/result',
+        element: <Result />,
       },
       {
-        path: '/:optionId/set2',
-        element: <Question />,
+        path: '/:optionId/:setId',
+        element: <Questions />,
       },
       {
-        path: '/:optionId/set3',
-        element: <Question />,
+        path: '/:optionId/:setId',
+        element: <Questions />,
       },
       {
-        path: '/:optionId/set4',
-        element: <Question />,
+        path: '/:optionId/:setId',
+        element: <Questions />,
+      },
+      {
+        path: '/:optionId/:setId',
+        element: <Questions />,
       },
     ],
   },

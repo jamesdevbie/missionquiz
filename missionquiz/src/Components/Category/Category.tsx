@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+import useSetContext from '../../Context/UseSetContext'
 import { QUESTION_LIST } from '../../assets/Constants'
 import { type QUESTION_TYPE } from '../../assets/Constants'
 
@@ -9,6 +10,18 @@ import './Category.css'
 const Category = () => {
   const { optionId } = useParams()
   const navigate = useNavigate()
+  // ...existing code...
+  const {
+    setOne,
+    setTwo,
+    setThree,
+    setFour,
+    setSetOne,
+    setSetTwo,
+    setSetThree,
+    setSetFour,
+  } = useSetContext()
+
   let categorizedQ: QUESTION_TYPE[] = QUESTION_LIST.filter(
     (ql) => ql.category === optionId
   ).map((q, index) => ({
@@ -16,15 +29,9 @@ const Category = () => {
     index,
   }))
 
-  console.log(categorizedQ)
-
   let categorySetCount: number = 20
   let noOfSets: number = categorySetCount / 5
   let setCard: number[] = new Array(noOfSets).fill(0)
-  const [setOne, setSetOne] = useState<QUESTION_TYPE[]>([])
-  const [setTwo, setSetTwo] = useState<QUESTION_TYPE[]>([])
-  const [setThree, setSetThree] = useState<QUESTION_TYPE[]>([])
-  const [setFour, setSetFour] = useState<QUESTION_TYPE[]>([])
 
   useEffect(() => {}, [setOne, setTwo, setThree, setFour])
 
@@ -32,19 +39,16 @@ const Category = () => {
     const target = e.target as HTMLDivElement
     if (target.id === '1') {
       setSetOne(() => categorizedQ.filter((q) => q.set === 1))
-      navigate(`/${optionId}/set1`)
+      navigate(`/${optionId}/set1`, { state: setOne })
     } else if (target.id === '2') {
       setSetTwo(categorizedQ.filter((q) => q.set === 2))
-      navigate(`/${optionId}/set2`)
-      console.log(setTwo)
+      navigate(`/${optionId}/set2`, { state: categorizedQ })
     } else if (target.id === '3') {
       setSetThree(categorizedQ.filter((q) => q.set === 3))
-      navigate(`/${optionId}/set3`)
-      console.log(setThree)
+      navigate(`/${optionId}/set3`, { state: setThree })
     } else if (target.id === '4') {
       setSetFour(categorizedQ.filter((q) => q.set === 4))
-      navigate(`/${optionId}/set4`)
-      console.log(setFour)
+      navigate(`/${optionId}/set4`, { state: setFour })
     }
   }
 

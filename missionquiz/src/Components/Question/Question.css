@@ -1,0 +1,85 @@
+.question-container {
+  background-color: #f9f9f9;
+  text-align: left;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 16px;
+  padding-left: 3%;
+  margin: 16px 0;
+  width: 60%;
+  min-height: 40%;
+}
+
+.question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form > p,
+h3,
+label,
+input {
+  color: red;
+  font-size: 1.2rem;
+}
+
+.question-container {
+  background-image: url('https://static.vecteezy.com/system/resources/previews/006/691/887/non_2x/yellow-question-mark-background-with-text-space-quiz-symbol-vector.jpg');
+  text-align: left;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 16px;
+  padding-left: 3%;
+  margin: 16px 0;
+  width: 60%;
+  min-height: 80%;
+}
+
+.wrong-answer {
+  color: rgb(239, 199, 199);
+  font-size: 1.5rem;
+}
+
+.right-answer {
+  color: rgb(165, 246, 165);
+  font-size: 1.5rem;
+}
+
+.right-result {
+  background: #020024;
+  background: radial-gradient(
+    circle,
+    rgba(2, 0, 36, 0.9) 24%,
+    rgba(9, 9, 121, 1) 46%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 12px;
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80;
+  min-height: 40%;
+}
+
+.wrong-result {
+  background: #b43c3a;
+  background: radial-gradient(
+    circle,
+    rgba(180, 60, 58, 1) 0%,
+    rgba(253, 29, 33, 1) 50%,
+    rgba(252, 69, 121, 1) 100%
+  );
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 12px;
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80;
+  min-height: 40%;
+}

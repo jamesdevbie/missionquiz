@@ -1,0 +1,33 @@
+//import useSetContext from '../../Context/UseSetContext'
+
+import './Result.css'
+
+const Result = () => {
+  return (
+    <div className="result-container">
+      <h1 style={{ color: 'black' }}>Quiz Result</h1>
+      <div style={{ marginTop: '1rem' }}>
+        <p style={{ fontSize: '2rem', color: 'black' }}>
+          <em>
+            <span style={{ color: 'red' }}>Congratulations! </span>You answered{' '}
+            <strong
+              style={{
+                color: 'black',
+                fontSize: '2.5rem',
+                border: '1px solid cyan',
+                borderRadius: '0.5rem',
+                backgroundColor: 'yellow',
+                padding: '0.5rem 1rem',
+              }}
+            >
+              {localStorage.getItem('rightAnswerCount')}
+            </strong>{' '}
+            questions correctly!
+          </em>
+        </p>
+      </div>
+    </div>
+  )
+}
+
+export default Result
