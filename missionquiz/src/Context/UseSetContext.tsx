@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react'
+import React, { createContext, useContext, useState, type ReactNode } from 'react'
 import { type QUESTION_TYPE } from '../assets/Constants'
 
 type SetContextType = {
