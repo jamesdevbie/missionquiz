@@ -138,7 +138,8 @@ const Question = () => {
           >
             <button
               style={{ display: resultDisplay }}
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault()
                 navigate('/result')
               }}
             >
