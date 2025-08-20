@@ -5,7 +5,17 @@ import './Result.css'
 const Result = () => {
   return (
     <div className="result-container">
-      <h1 style={{ color: 'black' }}>Quiz Result</h1>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '2%',
+        }}
+      >
+        <h1 style={{ color: 'black' }}>Quiz Result</h1>
+        <div className="image"></div>
+      </div>
       <div style={{ marginTop: '1rem' }}>
         <p style={{ fontSize: '2rem', color: 'black' }}>
           <em>

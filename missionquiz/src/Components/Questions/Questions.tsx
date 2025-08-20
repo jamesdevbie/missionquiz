@@ -7,13 +7,15 @@ import useSetContext from '../../Context/UseSetContext'
 const Questions = () => {
   const { setId } = useParams()
   const { selectedSet, setSelectedSet } = useSelectedSetContext()
-  const { rightAnswerCount } = useSetContext()
+  const { rightAnswerCount, setRightAnswerCount } = useSetContext()
   setSelectedSet(setId ?? '')
 
   useEffect(() => {
     // You can perform any side effects here when the selected set changes
   }, [selectedSet])
-
+  useEffect(() => {
+    setRightAnswerCount(0)
+  }, [])
   return (
     <>
       <div

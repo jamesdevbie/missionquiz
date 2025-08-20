@@ -14,17 +14,20 @@ const Question = () => {
     setRightAnswerCount,
   } = useSetContext()
   const { selectedSet } = useSelectedSetContext()
-
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [isSubmitClicked, setIsSubmitClicked] = useState(false)
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
-
   const [display, setDisplay] = useState('block')
   const [rightAnswer, setRightAnswer] = useState<string | null>(null)
   const [wrongAnswer, setWrongAnswer] = useState<string | null>(null)
   const [resultDisplay, setResultDisplay] = useState('none')
 
-  useEffect(() => {}, [currentQuestion, setSelectedAnswer, rightAnswerCount])
+  useEffect(() => {}, [
+    currentQuestion,
+    setSelectedAnswer,
+    rightAnswerCount,
+    selectedAnswer,
+  ])
   const navigate = useNavigate()
   useEffect(() => {
     localStorage.setItem('rightAnswerCount', JSON.stringify(rightAnswerCount))
@@ -81,6 +84,7 @@ const Question = () => {
       setCurrentQuestion(currentQuestion + 1)
       setRightAnswer(null)
       setWrongAnswer(null)
+      setSelectedAnswer(null)
     }
   }
 
@@ -105,8 +109,8 @@ const Question = () => {
                 id={`option-${index}`}
                 name="answer"
                 value={option}
-                checked={selectedAnswer === option}
                 onChange={answerOptionHandler}
+                checked={selectedAnswer === option}
               />
               <label htmlFor={`option-${index}`}>{option}</label>
             </span>

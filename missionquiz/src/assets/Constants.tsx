@@ -15,9 +15,9 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     set: 1,
   },
   {
-    question: 'What is the capital if India?',
+    question: 'What is the capital if Tamil Nadu?',
     answerOptions: ['New Delhi', 'Mumbai', 'Kolkata', 'Chennai'],
-    answer: 'New Delhi',
+    answer: 'Chennai',
     category: 'Geography',
     set: 2,
   },

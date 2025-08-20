@@ -11,3 +11,12 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   min-height: 100vh;
 }
+
+.image {
+  background-image: url('https://i.pinimg.com/736x/53/e2/1a/53e21a81016c1327524295df0fdabaab.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 10%;
+  height: 20vh;
+  border-radius: 0.5rem;
+}
