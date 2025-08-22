@@ -62,7 +62,7 @@ const Question = () => {
     } */
   }
 
-  const submitHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const submitHandler = (e?: React.MouseEvent<HTMLButtonElement>) => {
     if (e) e.preventDefault()
     if (currentQuestion === 0 || currentQuestion < 4) {
       setIsSubmitClicked(!isSubmitClicked)
@@ -83,7 +83,7 @@ const Question = () => {
     }
   }
 
-  const nextHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const nextHandler = (e?: React.MouseEvent<HTMLButtonElement>) => {
     if (e) e.preventDefault()
     if (currentQuestion === 0 || currentQuestion < 4) {
       setIsSubmitClicked(!isSubmitClicked)
