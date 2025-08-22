@@ -19,10 +19,10 @@ const CountDown: React.FC<CountDownProps> = ({
   }, [timeLeft, startCounter])
 
   const counterhandler = () => {
-    let timer: NodeJS.Timeout
+    let timer: ReturnType<typeof setTimeout>
     if (startCounter) {
       timer = setTimeout(
-        () => (timeLeft > 0 ? setTimeLeft(timeLeft - 1) : submitHandler()),
+        () => (timeLeft > 0 ? setTimeLeft(timeLeft - 1) : submitHandler(false)),
         1000
       )
     } else {
