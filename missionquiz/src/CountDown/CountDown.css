@@ -1,0 +1,15 @@
+.counter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  border: 6px solid #5cea2c;
+}
+
+p {
+  font-size: 2rem;
+  font-weight: bold;
+}

@@ -1,4 +1,9 @@
-import React, { createContext, useContext, useState, type ReactNode } from 'react'
+import React, {
+  createContext,
+  useContext,
+  useState,
+  type ReactNode,
+} from 'react'
 import { type QUESTION_TYPE } from '../assets/Constants'
 
 type SetContextType = {
@@ -12,11 +17,14 @@ type SetContextType = {
   setSetTwo: React.Dispatch<React.SetStateAction<QUESTION_TYPE[]>>
   setSetThree: React.Dispatch<React.SetStateAction<QUESTION_TYPE[]>>
   setSetFour: React.Dispatch<React.SetStateAction<QUESTION_TYPE[]>>
+  timeLeft: number
+  setTimeLeft: React.Dispatch<React.SetStateAction<number>>
 }
 
 const SetContext = createContext<SetContextType | undefined>(undefined)
 
 export const SetProvider = ({ children }: { children: ReactNode }) => {
+  const [timeLeft, setTimeLeft] = useState(10)
   const [setOne, setSetOne] = useState<QUESTION_TYPE[]>([])
   const [setTwo, setSetTwo] = useState<QUESTION_TYPE[]>([])
   const [setThree, setSetThree] = useState<QUESTION_TYPE[]>([])
@@ -36,6 +44,8 @@ export const SetProvider = ({ children }: { children: ReactNode }) => {
         setSetFour,
         rightAnswerCount,
         setRightAnswerCount,
+        timeLeft,
+        setTimeLeft,
       }}
     >
       {children}

@@ -3,6 +3,7 @@ import useSetContext from '../../Context/UseSetContext'
 import './Question.css'
 import useSelectedSetContext from '../../Context/UseSelectedSet'
 import { useNavigate } from 'react-router'
+import CountDown from '../../CountDown/CountDown'
 
 const Question = () => {
   const {
@@ -21,6 +22,8 @@ const Question = () => {
   const [rightAnswer, setRightAnswer] = useState<string | null>(null)
   const [wrongAnswer, setWrongAnswer] = useState<string | null>(null)
   const [resultDisplay, setResultDisplay] = useState('none')
+  const [startCounter, setStartCounter] = useState(true)
+  const [displayTimer, setDisplayTimer] = useState('block')
 
   useEffect(() => {}, [
     currentQuestion,
@@ -44,7 +47,7 @@ const Question = () => {
 
   const answerOptionHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedAnswer(e.target.value)
-    console.log(selectedAnswer)
+
     /*if (selectedAnswer === questionSet[currentQuestion]?.answer) {
       setUserAnswer({
         question: questionSet[currentQuestion],
@@ -60,12 +63,15 @@ const Question = () => {
   }
 
   const submitHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
+    if (e) e.preventDefault()
     if (currentQuestion === 0 || currentQuestion < 4) {
       setIsSubmitClicked(!isSubmitClicked)
+      setStartCounter(!startCounter)
+      setDisplayTimer('none')
     } else {
       setDisplay('none')
       setResultDisplay('block')
+      setDisplayTimer('none')
     }
     if (selectedAnswer === questionSet[currentQuestion]?.answer) {
       setRightAnswer(`Thats the Right Answer - ${selectedAnswer}`)
@@ -78,13 +84,15 @@ const Question = () => {
   }
 
   const nextHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
+    if (e) e.preventDefault()
     if (currentQuestion === 0 || currentQuestion < 4) {
       setIsSubmitClicked(!isSubmitClicked)
       setCurrentQuestion(currentQuestion + 1)
       setRightAnswer(null)
       setWrongAnswer(null)
       setSelectedAnswer(null)
+      setStartCounter(true)
+      setDisplayTimer('block')
     }
   }
 
@@ -151,6 +159,14 @@ const Question = () => {
             </button>
           </div>
         </form>
+      </div>
+      <div className="counter">
+        <CountDown
+          submitHandler={submitHandler}
+          nextHandler={nextHandler}
+          startCounter={startCounter}
+          displayTimer={displayTimer}
+        />
       </div>
     </div>
   )
