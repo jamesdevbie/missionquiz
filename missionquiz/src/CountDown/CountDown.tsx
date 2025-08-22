@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './CountDown.css'
 interface CountDownProps {
-  submitHandler: () => void
-  nextHandler?: () => void
+  submitHandler: (e: React.MouseEvent<HTMLButtonElement>) => void
+  nextHandler?: (e: React.MouseEvent<HTMLButtonElement>) => void
   startCounter: boolean
   displayTimer: string
 }
