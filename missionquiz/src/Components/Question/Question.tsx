@@ -42,7 +42,7 @@ const Question = () => {
   const navigate = useNavigate()
 
   const submitRef = useRef<HTMLButtonElement | null>(null)
-  const resultRef = useRef<HTMLDivElement | null>(null)
+  const resultRef = useRef<HTMLButtonElement | null>(null)
 
   useEffect(() => {
     localStorage.setItem('rightAnswerCount', JSON.stringify(rightAnswerCount))
@@ -107,12 +107,6 @@ const Question = () => {
       setDisplayTimer('block')
     }
   }
-
-  // if (e.target.value === questionSet[currentQuestion]?.answer) {
-  //   result = `<span> Thats the Right Answer</span>`
-  // } else {
-  //   result = `<span> That's wrong - The correct answer is ${questionSet[currentQuestion]?.answer}</span>`
-  // }
 
   return (
     <div className="question">
