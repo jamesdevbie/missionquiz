@@ -4,6 +4,7 @@ type QUESTION_TYPE = {
   answer: string
   category: string
   set: number
+  type: string
 }
 
 const QUESTION_LIST: QUESTION_TYPE[] = [
@@ -13,6 +14,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'New Delhi',
     category: 'Geography',
     set: 1,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the capital if Tamil Nadu?',
@@ -20,6 +22,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Chennai',
     category: 'Geography',
     set: 2,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the capital if India?',
@@ -27,6 +30,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'New Delhi',
     category: 'Geography',
     set: 3,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the capital if India?',
@@ -34,6 +38,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'New Delhi',
     category: 'Geography',
     set: 4,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the capital if Pakistan?',
@@ -41,6 +46,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Islamabad',
     category: 'Geography',
     set: 1,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the capital if India?',
@@ -48,6 +54,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'New Delhi',
     category: 'Geography',
     set: 2,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the capital if India?',
@@ -55,6 +62,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'New Delhi',
     category: 'Geography',
     set: 3,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the capital if India?',
@@ -62,6 +70,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'New Delhi',
     category: 'Geography',
     set: 4,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the capital if Srilanka?',
@@ -69,6 +78,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Colombo',
     category: 'Geography',
     set: 1,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the capital if Nepal?',
@@ -76,6 +86,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Kathmandu',
     category: 'Geography',
     set: 1,
+    type: 'multiple-choice',
   },
 
   {
@@ -84,6 +95,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Jupiter',
     category: 'Astronomy',
     set: 1,
+    type: 'multiple-choice',
   },
   // need 10 more astronomy category questions
   {
@@ -92,6 +104,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Mercury',
     category: 'Astronomy',
     set: 2,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the third planet from the Sun?',
@@ -99,6 +112,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Earth',
     category: 'Astronomy',
     set: 3,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the fourth planet from the Sun?',
@@ -106,6 +120,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Mars',
     category: 'Astronomy',
     set: 4,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the fifth planet from the Sun?',
@@ -113,6 +128,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Jupiter',
     category: 'Astronomy',
     set: 1,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the largest planet in our solar system?',
@@ -120,6 +136,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Jupiter',
     category: 'Astronomy',
     set: 2,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the third planet from the Sun?',
@@ -127,6 +144,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Earth',
     category: 'Astronomy',
     set: 3,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the fourth planet from the Sun?',
@@ -134,6 +152,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Mars',
     category: 'Astronomy',
     set: 4,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the fifth planet from the Sun?',
@@ -141,6 +160,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Jupiter',
     category: 'Astronomy',
     set: 1,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the second planet from the Sun?',
@@ -148,6 +168,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Venus',
     category: 'Astronomy',
     set: 2,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the third planet from the Sun?',
@@ -155,6 +176,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Earth',
     category: 'Astronomy',
     set: 3,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the fourth planet from the Sun?',
@@ -162,6 +184,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Mars',
     category: 'Astronomy',
     set: 4,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the fifth planet from the Sun?',
@@ -169,6 +192,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Jupiter',
     category: 'Astronomy',
     set: 5,
+    type: 'multiple-choice',
   },
   {
     question: "Who wrote 'To Kill a Mockingbird'?",
@@ -181,6 +205,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Harper Lee',
     category: 'Literature',
     set: 3,
+    type: 'multiple-choice',
   },
   {
     question: 'What is the chemical symbol for water?',
@@ -188,6 +213,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'H2O',
     category: 'Science',
     set: 4,
+    type: 'multiple-choice',
   },
   {
     question: 'Which planet is known as the Red Planet?',
@@ -195,6 +221,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'Mars',
     category: 'Astronomy',
     set: 5,
+    type: 'multiple-choice',
   },
   //need more questions in Tamil language
   {
@@ -203,6 +230,7 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     answer: 'டெல்லி',
     category: 'Geography',
     set: 1,
+    type: 'connection',
   },
 ]
 

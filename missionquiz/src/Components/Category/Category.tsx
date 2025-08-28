@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import useSetContext from '../../Context/UseSetContext'
 import { QUESTION_LIST } from '../../assets/Constants'
@@ -63,13 +63,21 @@ const Category = () => {
       <div className="category-content" onClick={setHandler}>
         {setCard.map((_, index) => {
           return (
-            <div key={index} className="set-card" id={`${index + 1}`}>
-              <h2>{`Set ${index + 1}`}</h2>
-              <img
-                src="https://unicminds.com/wp-content/uploads/2024/03/Riddles-UnicMinds-1016x1024.webp"
-                alt={`Set ${index + 1}`}
-              />
-              {/* Render questions for this set */}
+            <div className="set-card-container">
+              <Link
+                className="set-link"
+                to={`/${optionId}/set${index + 1}`}
+                key={index}
+              >
+                <div className="set-card" id={`${index + 1}`}>
+                  <h2>{`Set ${index + 1}`}</h2>
+                  <img
+                    src="https://unicminds.com/wp-content/uploads/2024/03/Riddles-UnicMinds-1016x1024.webp"
+                    alt={`Set ${index + 1}`}
+                  />
+                </div>
+                {/* Render questions for this set */}
+              </Link>
             </div>
           )
         })}

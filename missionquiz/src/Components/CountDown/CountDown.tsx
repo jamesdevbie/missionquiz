@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+
 import './CountDown.css'
 interface CountDownProps {
   submitHandler: (e?: React.MouseEvent<HTMLButtonElement>) => void
@@ -17,6 +18,16 @@ const CountDown: React.FC<CountDownProps> = ({
   useEffect(() => {
     counterhandler()
   }, [timeLeft, startCounter])
+
+  // useEffect(() => {
+  //   console.log('Player - Pageload')
+  //   play()
+  // }, [])
+
+  // useEffect(() => {
+  //   console.log('Player - startCounter Update')
+  //   if (startCounter) play()
+  // }, [startCounter])
 
   const counterhandler = () => {
     let timer: ReturnType<typeof setTimeout>

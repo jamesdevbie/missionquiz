@@ -3,12 +3,13 @@
 }
 .category-content {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: space-between;
 }
 .set-card {
   border: 2px solid rgb(6, 238, 79);
-  width: 20%;
+  width: 75%;
+  height: 50vh;
   margin: 10px;
   padding: 10px;
   border-radius: 10px;
@@ -16,6 +17,8 @@
 }
 .set-card img {
   width: 100%;
+  height: auto;
+
   border-radius: 5px;
 }
 
@@ -26,4 +29,7 @@
   font-size: xx-large;
   font-weight: bolder;
   font-style: italic;
+}
+.set-link {
+  display: flex;
 }

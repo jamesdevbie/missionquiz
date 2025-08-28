@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import useSetContext from '../../Context/UseSetContext'
 import './Question.css'
 import useSelectedSetContext from '../../Context/UseSelectedSet'
 import { useNavigate } from 'react-router'
-import CountDown from '../../CountDown/CountDown'
+import CountDown from '../CountDown/CountDown'
 
 const Question = () => {
   const {
@@ -31,7 +31,19 @@ const Question = () => {
     rightAnswerCount,
     selectedAnswer,
   ])
+
+  useEffect(() => {
+    submitRef.current?.focus()
+  }, [])
+  useEffect(() => {
+    resultRef.current?.focus()
+  }, [resultDisplay])
+
   const navigate = useNavigate()
+
+  const submitRef = useRef<HTMLButtonElement | null>(null)
+  const resultRef = useRef<HTMLDivElement | null>(null)
+
   useEffect(() => {
     localStorage.setItem('rightAnswerCount', JSON.stringify(rightAnswerCount))
   }, [rightAnswerCount])
@@ -106,23 +118,28 @@ const Question = () => {
     <div className="question">
       <div className="question-container">
         <form>
+          <h2>{questionSet[currentQuestion]?.type}</h2>
           <h3>
             {`${currentQuestion + 1}. `}
             {questionSet[currentQuestion]?.question}
           </h3>
-          {questionSet[currentQuestion]?.answerOptions.map((option, index) => (
-            <span key={index}>
-              <input
-                type="radio"
-                id={`option-${index}`}
-                name="answer"
-                value={option}
-                onChange={answerOptionHandler}
-                checked={selectedAnswer === option}
-              />
-              <label htmlFor={`option-${index}`}>{option}</label>
-            </span>
-          ))}
+          {questionSet[currentQuestion]?.type === 'multiple-choice' ? (
+            questionSet[currentQuestion]?.answerOptions.map((option, index) => (
+              <span key={index}>
+                <input
+                  type="radio"
+                  id={`option-${index}`}
+                  name="answer"
+                  value={option}
+                  onChange={answerOptionHandler}
+                  checked={selectedAnswer === option}
+                />
+                <label htmlFor={`option-${index}`}>{option}</label>
+              </span>
+            ))
+          ) : (
+            <p>The Right answer is {questionSet[currentQuestion]?.answer}</p>
+          )}
 
           <br></br>
           {rightAnswer && (
@@ -137,7 +154,11 @@ const Question = () => {
           )}
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             {!isSubmitClicked ? (
-              <button onClick={submitHandler} style={{ display }}>
+              <button
+                onClick={submitHandler}
+                style={{ display }}
+                ref={submitRef}
+              >
                 Submit
               </button>
             ) : (
@@ -150,6 +171,7 @@ const Question = () => {
           >
             <button
               style={{ display: resultDisplay }}
+              ref={resultRef}
               onClick={(e) => {
                 e.preventDefault()
                 navigate('/result')
