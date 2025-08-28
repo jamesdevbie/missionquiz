@@ -19,16 +19,6 @@ const CountDown: React.FC<CountDownProps> = ({
     counterhandler()
   }, [timeLeft, startCounter])
 
-  // useEffect(() => {
-  //   console.log('Player - Pageload')
-  //   play()
-  // }, [])
-
-  // useEffect(() => {
-  //   console.log('Player - startCounter Update')
-  //   if (startCounter) play()
-  // }, [startCounter])
-
   const counterhandler = () => {
     let timer: ReturnType<typeof setTimeout>
     if (startCounter) {

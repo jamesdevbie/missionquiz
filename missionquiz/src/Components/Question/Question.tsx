@@ -21,9 +21,15 @@ const Question = () => {
   const [display, setDisplay] = useState('block')
   const [rightAnswer, setRightAnswer] = useState<string | null>(null)
   const [wrongAnswer, setWrongAnswer] = useState<string | null>(null)
+  const [otherAnswer, setOtherAnswer] = useState<string | null>(null)
   const [resultDisplay, setResultDisplay] = useState('none')
   const [startCounter, setStartCounter] = useState(true)
   const [displayTimer, setDisplayTimer] = useState('block')
+
+  const navigate = useNavigate()
+
+  const submitRef = useRef<HTMLButtonElement | null>(null)
+  const resultRef = useRef<HTMLButtonElement | null>(null)
 
   useEffect(() => {}, [
     currentQuestion,
@@ -34,15 +40,10 @@ const Question = () => {
 
   useEffect(() => {
     submitRef.current?.focus()
+    setOtherAnswer(null)
   }, [])
-  useEffect(() => {
-    resultRef.current?.focus()
-  }, [resultDisplay])
 
-  const navigate = useNavigate()
-
-  const submitRef = useRef<HTMLButtonElement | null>(null)
-  const resultRef = useRef<HTMLButtonElement | null>(null)
+  useEffect(() => resultRef.current?.focus(), [resultDisplay])
 
   useEffect(() => {
     localStorage.setItem('rightAnswerCount', JSON.stringify(rightAnswerCount))
@@ -59,19 +60,6 @@ const Question = () => {
 
   const answerOptionHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedAnswer(e.target.value)
-
-    /*if (selectedAnswer === questionSet[currentQuestion]?.answer) {
-      setUserAnswer({
-        question: questionSet[currentQuestion],
-        rightAnswer: questionSet[currentQuestion]?.answer,
-        answer: selectedAnswer,
-        result:
-          selectedAnswer === questionSet[currentQuestion]?.answer
-            ? `Thats the Right Answer - ${selectedAnswer}`
-            : `That's wrong - The correct answer is ${questionSet[currentQuestion]?.answer}`,
-      })
-      console.log(userAnswer)
-    } */
   }
 
   const submitHandler = (e?: React.MouseEvent<HTMLButtonElement>) => {
@@ -85,9 +73,14 @@ const Question = () => {
       setResultDisplay('block')
       setDisplayTimer('none')
     }
+
     if (selectedAnswer === questionSet[currentQuestion]?.answer) {
       setRightAnswer(`Thats the Right Answer - ${selectedAnswer}`)
       setRightAnswerCount((prevCount) => prevCount + 1)
+    } else if (questionSet[currentQuestion]?.type === 'connection') {
+      setOtherAnswer(
+        `The Correct Answer is ${questionSet[currentQuestion]?.answer}`
+      )
     } else {
       setWrongAnswer(
         `That's wrong - The correct answer is ${questionSet[currentQuestion]?.answer}`
@@ -112,30 +105,28 @@ const Question = () => {
     <div className="question">
       <div className="question-container">
         <form>
-          <h2>{questionSet[currentQuestion]?.type}</h2>
           <h3>
             {`${currentQuestion + 1}. `}
             {questionSet[currentQuestion]?.question}
           </h3>
-          {questionSet[currentQuestion]?.type === 'multiple-choice' ? (
-            questionSet[currentQuestion]?.answerOptions.map((option, index) => (
-              <span key={index}>
-                <input
-                  type="radio"
-                  id={`option-${index}`}
-                  name="answer"
-                  value={option}
-                  onChange={answerOptionHandler}
-                  checked={selectedAnswer === option}
-                />
-                <label htmlFor={`option-${index}`}>{option}</label>
-              </span>
-            ))
-          ) : (
-            <p>The Right answer is {questionSet[currentQuestion]?.answer}</p>
-          )}
+          {questionSet[currentQuestion]?.type === 'multiple-choice'
+            ? questionSet[currentQuestion]?.answerOptions.map(
+                (option, index) => (
+                  <span key={index}>
+                    <input
+                      type="radio"
+                      id={`option-${index}`}
+                      name="answer"
+                      value={option}
+                      onChange={answerOptionHandler}
+                      checked={selectedAnswer === option}
+                    />
+                    <label htmlFor={`option-${index}`}>{option}</label>
+                  </span>
+                )
+              )
+            : ''}
 
-          <br></br>
           {rightAnswer && (
             <div className="right-result">
               <h2 className="right-answer">{rightAnswer} 😎😎</h2>
@@ -144,6 +135,11 @@ const Question = () => {
           {wrongAnswer && (
             <div className="wrong-result">
               <h2 className="wrong-answer">{wrongAnswer} 😭😭😭</h2>
+            </div>
+          )}
+          {otherAnswer && (
+            <div className="other-result">
+              <h2 className="other-answer">{otherAnswer} 😎😎😎</h2>
             </div>
           )}
           <div style={{ display: 'flex', justifyContent: 'center' }}>

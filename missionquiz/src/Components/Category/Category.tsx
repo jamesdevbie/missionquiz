@@ -1,9 +1,7 @@
 import { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import useSetContext from '../../Context/UseSetContext'
-import { QUESTION_LIST } from '../../assets/Constants'
-import { type QUESTION_TYPE } from '../../assets/Constants'
+import { QUESTION_LIST, type QUESTION_TYPE } from '../../assets/Constants'
 
 import './Category.css'
 

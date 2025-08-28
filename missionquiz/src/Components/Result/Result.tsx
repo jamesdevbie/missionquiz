@@ -1,5 +1,3 @@
-//import useSetContext from '../../Context/UseSetContext'
-
 import './Result.css'
 
 const Result = () => {

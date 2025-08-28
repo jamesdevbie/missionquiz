@@ -1,12 +1,11 @@
 import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-
+import App from './App.tsx'
 import Category from './Components/Category/Category.tsx'
 import Home from './Pages/Home/Home.tsx'
 import Questions from './Components/Questions/Questions.tsx'
 import Result from './Components/Result/Result.tsx'
+import './index.css'
 
 const appRouter = createBrowserRouter([
   {

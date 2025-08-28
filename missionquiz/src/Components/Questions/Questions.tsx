@@ -1,18 +1,15 @@
-import { useParams } from 'react-router-dom'
-import Question from '../Question/Question'
-import useSelectedSetContext from '../../Context/UseSelectedSet'
 import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import useSetContext from '../../Context/UseSetContext'
+import useSelectedSetContext from '../../Context/UseSelectedSet'
+import Question from '../Question/Question'
 
 const Questions = () => {
   const { setId } = useParams()
-  const { selectedSet, setSelectedSet } = useSelectedSetContext()
+  const { setSelectedSet } = useSelectedSetContext()
   const { rightAnswerCount, setRightAnswerCount } = useSetContext()
   setSelectedSet(setId ?? '')
 
-  useEffect(() => {
-    // You can perform any side effects here when the selected set changes
-  }, [selectedSet])
   useEffect(() => {
     setRightAnswerCount(0)
   }, [])
