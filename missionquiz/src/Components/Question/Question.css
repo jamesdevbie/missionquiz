@@ -17,9 +17,9 @@
   padding-top: 100px;
 }
 
-form {
+label :hover {
+  color: blue;
 }
-
 form > p,
 h3,
 label,

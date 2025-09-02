@@ -124,12 +124,7 @@ const Question = () => {
                   onChange={answerOptionHandler}
                   checked={selectedAnswer === option}
                 />
-                <label
-                  style={{ ':hover': { color: 'blue' } }}
-                  htmlFor={`option-${index}`}
-                >
-                  {option}
-                </label>
+                <label htmlFor={`option-${index}`}>{option}</label>
               </span>
             ))
           ) : questionSet[currentQuestion]?.type === 'connection' ? (
