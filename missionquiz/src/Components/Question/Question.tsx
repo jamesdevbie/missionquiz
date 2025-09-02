@@ -22,6 +22,7 @@ const Question = () => {
   const [rightAnswer, setRightAnswer] = useState<string | null>(null)
   const [wrongAnswer, setWrongAnswer] = useState<string | null>(null)
   const [otherAnswer, setOtherAnswer] = useState<string | null>(null)
+  const [connectionAnswer, setConnectionAnswer] = useState<string | null>(null)
   const [resultDisplay, setResultDisplay] = useState('none')
   const [startCounter, setStartCounter] = useState(true)
   const [displayTimer, setDisplayTimer] = useState('block')
@@ -77,10 +78,12 @@ const Question = () => {
     if (selectedAnswer === questionSet[currentQuestion]?.answer) {
       setRightAnswer(`Thats the Right Answer - ${selectedAnswer}`)
       setRightAnswerCount((prevCount) => prevCount + 1)
-    } else if (questionSet[currentQuestion]?.type === 'connection') {
+    } else if (questionSet[currentQuestion]?.type === 'others') {
       setOtherAnswer(
         `The Correct Answer is ${questionSet[currentQuestion]?.answer}`
       )
+    } else if (questionSet[currentQuestion]?.type === 'connection') {
+      setConnectionAnswer(`${questionSet[currentQuestion]?.answer}`)
     } else {
       setWrongAnswer(
         `That's wrong - The correct answer is ${questionSet[currentQuestion]?.answer}`
@@ -100,32 +103,45 @@ const Question = () => {
       setDisplayTimer('block')
     }
   }
-
+  console.log(questionSet[currentQuestion]?.question)
   return (
     <div className="question">
       <div className="question-container">
         <form>
           <h3>
-            {`${currentQuestion + 1}. `}
-            {questionSet[currentQuestion]?.question}
+            {`${currentQuestion + 1}. ${
+              questionSet[currentQuestion]?.question
+            }`}
           </h3>
-          {questionSet[currentQuestion]?.type === 'multiple-choice'
-            ? questionSet[currentQuestion]?.answerOptions.map(
-                (option, index) => (
-                  <span key={index}>
-                    <input
-                      type="radio"
-                      id={`option-${index}`}
-                      name="answer"
-                      value={option}
-                      onChange={answerOptionHandler}
-                      checked={selectedAnswer === option}
-                    />
-                    <label htmlFor={`option-${index}`}>{option}</label>
-                  </span>
-                )
-              )
-            : ''}
+          {questionSet[currentQuestion]?.type === 'multiple-choice' ? (
+            questionSet[currentQuestion]?.answerOptions.map((option, index) => (
+              <span key={index}>
+                <input
+                  type="radio"
+                  id={`option-${index}`}
+                  name="answer"
+                  value={option}
+                  onChange={answerOptionHandler}
+                  checked={selectedAnswer === option}
+                />
+                <label
+                  style={{ ':hover': { color: 'blue' } }}
+                  htmlFor={`option-${index}`}
+                >
+                  {option}
+                </label>
+              </span>
+            ))
+          ) : questionSet[currentQuestion]?.type === 'connection' ? (
+            <div className="connection">
+              <img
+                src={`${window.location.origin}/src/assets/Images/${questionSet[currentQuestion]?.image}`}
+                alt="Connection"
+              />
+            </div>
+          ) : (
+            'null'
+          )}
 
           {rightAnswer && (
             <div className="right-result">
@@ -140,6 +156,11 @@ const Question = () => {
           {otherAnswer && (
             <div className="other-result">
               <h2 className="other-answer">{otherAnswer} 😎😎😎</h2>
+            </div>
+          )}
+          {connectionAnswer && (
+            <div className="connection-result">
+              <h2 className="connection-answer">{connectionAnswer} 😎😎</h2>
             </div>
           )}
           <div style={{ display: 'flex', justifyContent: 'center' }}>

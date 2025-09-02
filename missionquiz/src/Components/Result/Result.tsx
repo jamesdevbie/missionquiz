@@ -1,6 +1,11 @@
+import { useEffect } from 'react'
 import './Result.css'
 
 const Result = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className="result-container">
       <div

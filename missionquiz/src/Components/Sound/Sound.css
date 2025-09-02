@@ -1,0 +1,7 @@
+.sound-button {
+  width: 4rem;
+  height: 4rem;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}

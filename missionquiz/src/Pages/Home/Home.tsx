@@ -5,10 +5,10 @@ const Home = () => {
     <>
       <SpinWheel
         options={[
-          'Geography',
-          'Astronomy',
-          'Opt3',
-          'Opt4',
+          'ஆதி',
+          'சங்கீ',
+          'நியா',
+          'வெளி',
           'Opt5',
           'Opt6',
           'Opt7',
