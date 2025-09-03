@@ -4,11 +4,8 @@ import useSetContext from '../../Context/UseSetContext'
 import { QUESTION_LIST, type QUESTION_TYPE } from '../../assets/Constants'
 
 import './Category.css'
-import useStageContext from '../../Context/UseStageContext'
 
 const Category = () => {
-  const { stage, setStage } = useStageContext()
-
   const { optionId } = useParams()
   console.log('optionId:', optionId)
   const navigate = useNavigate()
@@ -29,7 +26,7 @@ const Category = () => {
       console.log('Inside Kids')
       return ql.category.toLowerCase() === optionId.toLowerCase()
     }
-    return ql.category.toLowerCase() === optionId.toLowerCase()
+    return ql.category.toLowerCase() === optionId?.toLowerCase()
   }).map((q, index) => ({
     ...q,
     index,
@@ -64,7 +61,7 @@ const Category = () => {
     <>
       <div className="category-header">
         {!optionId ? (
-          <h1 className="heading">{`Welcome to ${kidsID} Category`}</h1>
+          <h1 className="heading">{`Welcome to ${optionId} Category`}</h1>
         ) : (
           <h1 className="heading">
             {`You are Lucky 😜
