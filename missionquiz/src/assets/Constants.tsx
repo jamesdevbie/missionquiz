@@ -235,6 +235,39 @@ const QUESTION_LIST: QUESTION_TYPE[] = [
     set: 1,
     type: 'connection',
   },
+  //need some kids bible question
+  {
+    question: 'Who was the first king of Israel?',
+    answerOptions: ['Saul', 'David', 'Solomon', 'Samuel'],
+    answer: 'Saul',
+    category: 'Kids',
+    set: 1,
+    type: 'multiple-choice',
+  },
+  {
+    question: 'What did David use to slay Goliath?',
+    answerOptions: ['Sword', 'Sling and Stone', 'Bow and Arrow', 'His Hands'],
+    answer: 'Sling and Stone',
+    category: 'Kids',
+    set: 1,
+    type: 'multiple-choice',
+  },
+  {
+    question: 'Who was swallowed by a big fish?',
+    answerOptions: ['Daniel', 'Moses', 'Jonah', 'Noah'],
+    answer: 'Jonah',
+    category: 'Kids',
+    set: 1,
+    type: 'others',
+  },
+  {
+    question: 'What did Jesus turn water into?',
+    answerOptions: ['Wine', 'Juice', 'Oil', 'Milk'],
+    answer: 'Wine',
+    category: 'Kids',
+    set: 1,
+    type: 'multiple-choice',
+  },
 ]
 
 export const சங்கீ_IMAGE =

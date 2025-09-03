@@ -4,6 +4,8 @@ import './Question.css'
 import useSelectedSetContext from '../../Context/UseSelectedSet'
 import { useNavigate } from 'react-router'
 import CountDown from '../CountDown/CountDown'
+import useStageContext from '../../Context/UseStageContext'
+import useQuestionContext from '../../Context/useQuestionContext'
 
 const Question = () => {
   const {
@@ -14,7 +16,11 @@ const Question = () => {
     rightAnswerCount,
     setRightAnswerCount,
   } = useSetContext()
+
+  const { stage } = useStageContext()
+  const { questionSet, setQuestionSet } = useQuestionContext()
   const { selectedSet } = useSelectedSetContext()
+
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [isSubmitClicked, setIsSubmitClicked] = useState(false)
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
@@ -44,20 +50,25 @@ const Question = () => {
     setOtherAnswer(null)
   }, [])
 
+  useEffect(() => {
+    setQuestionSet(
+      selectedSet === 'set1'
+        ? setOne
+        : selectedSet === 'set2'
+        ? setTwo
+        : selectedSet === 'set3'
+        ? setThree
+        : setFour
+    )
+  }, [selectedSet])
+
   useEffect(() => resultRef.current?.focus(), [resultDisplay])
 
   useEffect(() => {
     localStorage.setItem('rightAnswerCount', JSON.stringify(rightAnswerCount))
   }, [rightAnswerCount])
 
-  const questionSet =
-    selectedSet === 'set1'
-      ? setOne
-      : selectedSet === 'set2'
-      ? setTwo
-      : selectedSet === 'set3'
-      ? setThree
-      : setFour
+  console.log('Question Set:', selectedSet)
 
   const answerOptionHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedAnswer(e.target.value)
@@ -103,7 +114,9 @@ const Question = () => {
       setDisplayTimer('block')
     }
   }
-  console.log(questionSet[currentQuestion]?.question)
+
+  console.log('questionSet', questionSet)
+
   return (
     <div className="question">
       <div className="question-container">
@@ -189,12 +202,14 @@ const Question = () => {
         </form>
       </div>
       <div className="counter">
-        <CountDown
-          submitHandler={submitHandler}
-          nextHandler={nextHandler}
-          startCounter={startCounter}
-          displayTimer={displayTimer}
-        />
+        {stage === 'adult' && (
+          <CountDown
+            submitHandler={submitHandler}
+            nextHandler={nextHandler}
+            startCounter={startCounter}
+            displayTimer={displayTimer}
+          />
+        )}
       </div>
     </div>
   )

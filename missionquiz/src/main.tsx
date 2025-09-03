@@ -3,8 +3,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App.tsx'
 import Category from './Components/Category/Category.tsx'
 import Home from './Pages/Home/Home.tsx'
+import Stage from './Components/Stage/Stage.tsx'
 import Questions from './Components/Questions/Questions.tsx'
 import Result from './Components/Result/Result.tsx'
+import Kids from './Pages/Kids/Kids.tsx'
 import './index.css'
 
 const appRouter = createBrowserRouter([
@@ -15,7 +17,15 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: '/',
+        element: <Stage />,
+      },
+      {
+        path: '/adult',
         element: <Home />,
+      },
+      {
+        path: '/:optionId',
+        element: <Kids />,
       },
       {
         path: '/:optionId',

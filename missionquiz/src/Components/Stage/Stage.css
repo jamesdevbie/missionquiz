@@ -1,0 +1,36 @@
+.stage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stage-options {
+  display: flex;
+  gap: 2rem;
+}
+.kid {
+  background-image: url('https://img.freepik.com/free-vector/group-happy-kids-white-background_1308-63915.jpg?semt=ais_hybrid&w=740&q=80');
+  width: 400px;
+  height: 300px;
+  background-size: cover;
+  border: 5px solid #eaff00;
+  border-radius: 10px;
+}
+
+.adult {
+  background-image: url('https://img.freepik.com/premium-vector/young-adult-couple-greeting-cartoon_18591-53007.jpg');
+  width: 400px;
+  height: 300px;
+  background-size: cover;
+  border: 5px solid #eaff00;
+  border-radius: 10px;
+}
+
+.kid:hover,
+.adult:hover {
+  border: 5px solid rgb(236, 73, 122);
+  cursor: pointer;
+  width: 420px;
+  height: 320px;
+}

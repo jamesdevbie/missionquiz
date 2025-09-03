@@ -4,9 +4,13 @@ import useSetContext from '../../Context/UseSetContext'
 import { QUESTION_LIST, type QUESTION_TYPE } from '../../assets/Constants'
 
 import './Category.css'
+import useStageContext from '../../Context/UseStageContext'
 
 const Category = () => {
+  const { stage, setStage } = useStageContext()
+
   const { optionId } = useParams()
+  console.log('optionId:', optionId)
   const navigate = useNavigate()
   // ...existing code...
   const {
@@ -20,12 +24,18 @@ const Category = () => {
     setSetFour,
   } = useSetContext()
 
-  let categorizedQ: QUESTION_TYPE[] = QUESTION_LIST.filter(
-    (ql) => ql.category === optionId
-  ).map((q, index) => ({
+  let categorizedQ: QUESTION_TYPE[] = QUESTION_LIST.filter((ql) => {
+    if (optionId === 'kids') {
+      console.log('Inside Kids')
+      return ql.category.toLowerCase() === optionId.toLowerCase()
+    }
+    return ql.category.toLowerCase() === optionId.toLowerCase()
+  }).map((q, index) => ({
     ...q,
     index,
   }))
+
+  console.log('Categorized Questions:', categorizedQ)
 
   let categorySetCount: number = 20
   let noOfSets: number = categorySetCount / 5
@@ -53,10 +63,14 @@ const Category = () => {
   return (
     <>
       <div className="category-header">
-        <h1 className="heading">
-          {`You are Lucky 😜
+        {!optionId ? (
+          <h1 className="heading">{`Welcome to ${kidsID} Category`}</h1>
+        ) : (
+          <h1 className="heading">
+            {`You are Lucky 😜
           welcome to ${optionId} Category`}
-        </h1>
+          </h1>
+        )}
       </div>
       <div className="category-content" onClick={setHandler}>
         {setCard.map((_, index) => {
